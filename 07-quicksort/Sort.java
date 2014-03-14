@@ -3,10 +3,34 @@ import java.util.*;
 public class Sort {
     Random rng = new Random();
 
-    public int[] quicksort(int[] a) {
-	return quicksort(a,0,a.length-1);
+    public void swap(int[] a, int p, int q) {
+	int t = a[p];
+	a[p] = a[q];
+	a[q] = t;
     }
-    public int[] quicksort(int[] a, int low, int high) {
+    public int partition(int[] a, int L, int R) {
+	int pindex = rng.nextInt(R-L)+L;
+	int p = a[pindex];
+	int wall = L;
+	swap(a,pindex,R);
+	for(int i=L; i<R; i++) {
+	    if(a[i]<p) {
+		swap(a,i,wall);
+		wall++;
+	    }
+	}
+	swap(a,wall,R);
+	return wall;
+    }
+    public int[] quicksort2(int[] a) {
+	return null;
+    }
+
+
+    public int[] yoloquicksort(int[] a) {
+	return yoloquicksort(a,0,a.length-1);
+    }
+    public int[] yoloquicksort(int[] a, int low, int high) {
 	System.out.println(Arrays.toString(a)+","+low+","+high);
 	if(low>=high){return a;}
 	if(high<0){return a;}
@@ -34,8 +58,8 @@ public class Sort {
 	for(int i=min; i<=max; i++) {
 	    t[i] = p;
 	}
-	t=quicksort(t,low,min-1);
-	t=quicksort(t,max+1,high);
+	t=yoloquicksort(t,low,min-1);
+	t=yoloquicksort(t,max+1,high);
 	return t;
     }
 }

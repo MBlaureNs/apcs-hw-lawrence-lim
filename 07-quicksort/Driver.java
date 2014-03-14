@@ -8,6 +8,10 @@ public class Driver {
 	int[] z = rt.randIntArray(10,100);
 
 	System.out.println(Arrays.toString(z));
-	System.out.println(Arrays.toString(s.quicksort(z)));
+	System.out.println(s.partition(z,3,7));
+	System.out.println(Arrays.toString(z));
+
+	//System.out.println(Arrays.toString(z));
+	//System.out.println(Arrays.toString(s.quicksort(z)));
     }
 }
