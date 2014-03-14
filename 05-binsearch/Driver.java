@@ -30,8 +30,10 @@ public class Driver {
 	//		   " Integers in "+diff+"ms ");
 	System.out.println(sorted);
 
-	System.out.println(s.binsearchrec(0,sorted));
-	System.out.println(ints.get(s.binsearchrec(0,sorted)));
+	System.out.println(s.binsearchrec(12,sorted));
+	System.out.println(ints.get(s.binsearchrec(12,sorted)));
+	System.out.println(s.binsearchitr(12,sorted));
+	System.out.println(ints.get(s.binsearchitr(12,sorted)));
 
 	//start = System.currentTimeMillis();
 	//sorted = s.mergesort(damnit);

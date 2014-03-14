@@ -87,4 +87,19 @@ public class Sort {
 	    return binsearchrec(target,al,n,end);
 	}
     }
+
+    public int binsearchitr(Comparable target, ArrayList<Comparable> al) {
+	int start = 0;
+	int end = al.size();
+	while(start<end) {
+	    int n = (start+end)/2;
+	    if (al.get(n).equals(target)) {return n;}
+	    else if (target.compareTo(al.get(n)) < 0) {
+		end = n;
+	    } else {
+		start = n;
+	    }
+	}
+	return -1;
+    }
 }

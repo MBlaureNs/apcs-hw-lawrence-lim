@@ -2,6 +2,39 @@ import java.util.*;
 
 public class Sort {
     Random rng = new Random();
+    FFS ffs = new FFS();
+
+    public int[] quicksort(int[] a) {
+	if(a.length<=1) {return a;}
+	ArrayList<Integer> left = new ArrayList<Integer>();
+	ArrayList<Integer> mid = new ArrayList<Integer>();
+	ArrayList<Integer> right = new ArrayList<Integer>();
+
+	int p = a[rng.nextInt(a.length)];
+	for(int i=0; i<a.length; i++) {
+	    if(a[i]<p) {left.add(a[i]);}
+	    else if(a[i]>p) {right.add(a[i]);}
+	    else {mid.add(a[i]);}
+	}
+	
+	int[] lefta = quicksort(ffs.IALtoia(left));
+	int[] righta = quicksort(ffs.IALtoia(right));
+	
+	int cur=0;
+	for(int i=0; i<left.size(); i++) {
+	    a[cur] = lefta[i]; 
+	    cur++;
+	}
+	for(int i=0; i<mid.size(); i++) {
+	    a[cur] = mid.get(i); 
+	    cur++;
+	}
+	for(int i=0; i<right.size(); i++) {
+	    a[cur] = righta[i]; 
+	    cur++;
+	}
+	return a;
+    }
 
     public void swap(int[] a, int p, int q) {
 	int t = a[p];
@@ -23,43 +56,20 @@ public class Sort {
 	return wall;
     }
     public int[] quicksort2(int[] a) {
-	return null;
+	return quicksort2(a,0,a.length-1);
+    }
+    public int[] quicksort2(int[] a, int L, int R) {
+	if(L>=R){return a;}
+	int p = partition(a,L,R);
+        a=quicksort2(a,L,p-1);
+	a=quicksort2(a,p+1,R);
+	return a;
     }
 
-
-    public int[] yoloquicksort(int[] a) {
-	return yoloquicksort(a,0,a.length-1);
-    }
-    public int[] yoloquicksort(int[] a, int low, int high) {
-	System.out.println(Arrays.toString(a)+","+low+","+high);
-	if(low>=high){return a;}
-	if(high<0){return a;}
-	if(low>=a.length){return a;}
-	int p = a[rng.nextInt(a.length)];
-	System.out.println(p);
-	int[] t = new int[a.length];
-	int min = low;
-	int max = high;
-	for(int i=0; i<min; i++) {
-	    t[i]=a[i];
+    public boolean check(int[] a) {
+	for(int i=0; i<a.length-1; i++) {
+	    if(a[i]>a[i+1]){return false;}
 	}
-	for(int i=max; i<a.length; i++) {
-	    t[i]=a[i];
-	}
-	for(int i=low; i<=high; i++) {
-	    if(a[i]<p) {
-		t[min] = a[i];
-		min++;
-	    } else if(a[i]>p) {
-		t[max] = a[i];
-		max--;
-	    }
-	}
-	for(int i=min; i<=max; i++) {
-	    t[i] = p;
-	}
-	t=yoloquicksort(t,low,min-1);
-	t=yoloquicksort(t,max+1,high);
-	return t;
+	return true;
     }
 }
