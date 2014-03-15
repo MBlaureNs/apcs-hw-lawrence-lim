@@ -44,16 +44,20 @@ public class Sort {
     public int partition(int[] a, int L, int R) {
 	int pindex = rng.nextInt(R-L)+L;
 	int p = a[pindex];
-	int wall = L;
-	swap(a,pindex,R);
-	for(int i=L; i<R; i++) {
+	int lwall = L;
+	int rwall = R;
+	for(int i=L; i<=rwall; i++) {
 	    if(a[i]<p) {
-		swap(a,i,wall);
-		wall++;
+		swap(a,i,lwall);
+		lwall++;
+	    }
+	    else if (a[i]>p) {
+		swap(a,i,rwall);
+		rwall--;
+		i--;
 	    }
 	}
-	swap(a,wall,R);
-	return wall;
+	return (lwall+rwall)/2;
     }
     public int[] quicksort2(int[] a) {
 	return quicksort2(a,0,a.length-1);

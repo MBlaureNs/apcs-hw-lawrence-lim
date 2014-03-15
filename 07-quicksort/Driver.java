@@ -2,12 +2,16 @@ import java.util.*;
 
 public class Driver {
     public static void main(String[] args) {
+	if(args.length < 1) {
+	    System.out.println("Enter a number of elements to sort.");
+	    return;
+	}
 	RandomTest rt = new RandomTest();
 	Sort s = new Sort();
-	int n = 1000000;
+	int n = Integer.parseInt(args[0]);
         long start,time;
 
-	int[] z1 = rt.randIntArray(n,100000);
+	int[] z1 = rt.randIntArray(n,100);
 	int[] z2 = Arrays.copyOf(z1,z1.length);
 
 	//System.out.println(Arrays.toString(z1));

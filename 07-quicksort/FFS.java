@@ -1,3 +1,7 @@
+/*
+ *Functions and stuff that java really should do for me but doesn't
+ */
+
 import java.util.*;
 
 public class FFS {
