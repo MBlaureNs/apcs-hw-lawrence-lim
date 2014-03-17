@@ -10,4 +10,11 @@ public class RandomTest {
 	}
 	return r;
     }
+    public int[] sameIntArray(int len, int e) {
+	int[] r = new int[len];
+	for (int i=0; i<len; i++) {
+	    r[i] = e;
+	}
+	return r;
+    }
 }

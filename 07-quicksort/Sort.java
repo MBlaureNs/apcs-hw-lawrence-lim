@@ -41,7 +41,7 @@ public class Sort {
 	a[p] = a[q];
 	a[q] = t;
     }
-    public int partition(int[] a, int L, int R) {
+    public int[] partition(int[] a, int L, int R) {
 	int pindex = rng.nextInt(R-L)+L;
 	int p = a[pindex];
 	int lwall = L;
@@ -57,16 +57,19 @@ public class Sort {
 		i--;
 	    }
 	}
-	return (lwall+rwall)/2;
+	int[] r = new int[2];
+	r[0] = lwall;
+	r[1] = rwall;
+	return r;
     }
     public int[] quicksort2(int[] a) {
 	return quicksort2(a,0,a.length-1);
     }
     public int[] quicksort2(int[] a, int L, int R) {
 	if(L>=R){return a;}
-	int p = partition(a,L,R);
-        a=quicksort2(a,L,p-1);
-	a=quicksort2(a,p+1,R);
+	int[] p = partition(a,L,R);
+        a=quicksort2(a,L,p[0]-1);
+	a=quicksort2(a,p[1]+1,R);
 	return a;
     }
 
