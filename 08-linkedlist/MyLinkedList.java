@@ -1,21 +1,18 @@
 public class MyLinkedList {
-    Node head;
-    int length;
+    private Node head;
+    private int length;
     
     public MyLinkedList() {
 	head = null;
 	length = 0;
     }
 
-    public void add(String n, int index) {
-	if(index<0) {
+    public void add(int index, String n) {
+	if(index<0 || index>length) {
 	    System.out.println("lol");
 	    return;
 	}
-	if(index>length) {
-	    System.out.println("no");
-	    return;
-	}
+	
 	Node next = new Node();
 	next.setData(n);
 	if(index==0) {
@@ -31,47 +28,47 @@ public class MyLinkedList {
 	}
 	length++;
     }
-
     public void add(String n) {
-	Node next = new Node();
-	next.setData(n);
-	if(head==null) {
-	    head = next;
-	} else {
-	    Node cur = head;
-	    while(cur.hasNext()) {
-		cur = cur.getNext();
-	    }
-	    cur.setNext(next);
-	}
-	length++;
+	add(length,n);
     }
 
-    public void remove(int index) {
-	if(index<0) {
-	    System.out.println("lol");
-	    return;
-	}
-	if(index>length-1) {
-	    System.out.println("no");
-	    return;
-	}
-	
-	if(index==0) {
-	    head=get(1);
-	} else {
-	    Node cur = get(index-1);
-	    cur.setNext(get(index+1));
-	}
-	length--;
-    }
-	
-    public Node get(int index) {
-	if(index<0) {
+    public String remove(int index) {
+	if(index<0 || index>length-1) {
 	    System.out.println("lol");
 	    return null;
 	}
-	if(index>length-1) {
+	
+	String last;
+	if(index==0) {
+	    last = head.getData();
+	    head = head.getNext();
+	} else {
+	    Node cur = nodeAt(index-1);
+	    last = cur.getNext().getData();
+	    cur.setNext(nodeAt(index+1));
+	}
+	length--;
+	return last;
+    }
+
+    public int find(String s) {
+	Node cur = head;
+	int i = 0;
+	while(cur.hasNext()) {
+	    if(cur.getData().equals(s)) {
+		return i;
+	    }
+	    cur = cur.getNext();
+	    i++;
+	}
+	if(cur.getData().equals(s)) {
+	    return i;
+	}
+	return -1;
+    }
+    
+    private Node nodeAt(int index) {
+	if(index<0 || index>length-1) {
 	    System.out.println("no");
 	    return null;
 	}
@@ -82,6 +79,21 @@ public class MyLinkedList {
 	}
 	return cur;
     }
+    public String get(int index) {
+	return nodeAt(index).getData();
+    }
+
+    public String set(int index, String s) {
+	Node n = nodeAt(index);
+	if(n==null) {
+	    System.out.println("oh");
+	}
+	String last = n.getData();
+        n.setData(s);
+	return last;
+    }
+
+    public int length() {return length;}
 
     public String toString() {
 	String r = "[";

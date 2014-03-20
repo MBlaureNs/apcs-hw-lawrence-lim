@@ -2,7 +2,7 @@ public class Driver {
     public static void main(String[] arg) {
 	MyLinkedList l = new MyLinkedList();
 	System.out.println(l);
-	l.add("a",0);
+	l.add(0,"a");
 	l.add("b");
 	l.add("c");
 	l.add("d");
@@ -10,11 +10,15 @@ public class Driver {
 	l.add("f");
 	System.out.println(l);
 	System.out.println(l.get(1));
-	l.remove(1);
+	System.out.println(l.remove(1));
 	System.out.println(l);
-	l.add("asdjasd",1);
+	l.add(1,"asdjasd");
 	System.out.println(l);
-	l.add("nope",6);
+	l.add(6,"nope");
 	System.out.println(l);
+	System.out.println(l.set(3,"huehuehue"));
+	System.out.println(l);
+	System.out.println(l.find("huehuehue"));
+	System.out.println(l.find("derp"));
     }
 }
