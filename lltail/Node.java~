@@ -1,0 +1,31 @@
+public class Node {
+    private Node next;
+    private Node before;
+    private String data;
+
+    public Node() {
+	next = null;
+	data = "";
+    }
+
+  
+    public Node(String s) {
+	next = null;
+	data = s;
+    }
+
+    public void setBefore(Node x) {
+	before = x;
+    }
+
+    public boolean hasNext() {return next!=null;}
+
+    public Node getNext() {return next;}
+    public Node getBefore() {return before;}
+    public String getData() {return data;}
+
+    public void setNext(Node n) {next = n;}
+    public void setData(String s) {data = s;}
+
+    public String toString() {return data;}
+}

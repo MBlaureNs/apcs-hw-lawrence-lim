@@ -54,15 +54,12 @@ public class MyLinkedList {
     public int find(String s) {
 	Node cur = head;
 	int i = 0;
-	while(cur.hasNext()) {
+	while(cur!=null) {
 	    if(cur.getData().equals(s)) {
 		return i;
 	    }
 	    cur = cur.getNext();
 	    i++;
-	}
-	if(cur.getData().equals(s)) {
-	    return i;
 	}
 	return -1;
     }
@@ -93,7 +90,7 @@ public class MyLinkedList {
 	return last;
     }
 
-    public int length() {return length;}
+    public int size() {return length;}
 
     public String toString() {
 	String r = "[";
