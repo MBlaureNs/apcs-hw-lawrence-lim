@@ -1,30 +1,27 @@
 public class Node<T> {
     private Node<T> next;
-    private Node<T> before;
+    private Node<T> prev;
     private T data;
 
     public Node() {
 	next = null;
+	prev = null;
 	data = null;
     }
 
   
-    public Node(T s) {
+    public Node(T s, Node<T> prevnode) {
 	next = null;
+	prev = prevnode;
 	data = s;
     }
 
-    public void setBefore(Node<T> x) {
-	before = x;
-    }
-
-    public boolean hasNext() {return next!=null;}
-
     public Node<T> getNext() {return next;}
-    public Node<T> getBefore() {return before;}
+    public Node<T> getPrev() {return prev;}
     public T getData() {return data;}
 
     public void setNext(Node<T> n) {next = n;}
+    public void setPrev(Node<T> n) {prev = n;}
     public void setData(T s) {data = s;}
 
     public String toString() {return data.toString();}

@@ -3,6 +3,7 @@ public class Driver {
 	MyLinkedList<String> l = new MyLinkedList<String>();
 	System.out.println(l);
 	l.add(0,"a");
+	System.out.println(l);
 	l.add("b");
 	l.add("c");
 	l.add("d");
@@ -20,7 +21,14 @@ public class Driver {
 	System.out.println(l);
 	System.out.println(l.find("huehuehue"));
 	System.out.println(l.find("derp"));
-	System.out.println(l.nodeAt(3).getBefore());
+	System.out.println(l.nodeAt(3).getPrev());
 	System.out.println(l.get(2));
+	System.out.println(l.toStringBackward());
+	System.out.println(l);
+	System.out.println(l.nodeAt(2).getPrev());
+	System.out.println("---");
+	for(Object i : l) {
+	    System.out.println(i);
+	}
     }
 }
