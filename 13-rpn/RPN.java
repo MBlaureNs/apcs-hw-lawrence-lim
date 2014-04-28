@@ -27,23 +27,19 @@ public class RPN {
     private boolean runOnce(String input) {
 	if(isQuit(input)){
 	    return false;
+	} else if(input.equals("stack")){
+	    System.out.println(stack);
 	} else if(isOp(input)){
-	    switch(input) {
-	    case "+":
+	    if(input.equals("+")) {
 		add();
-		break;
-	    case "-":
+	    } else if(input.equals("-")) {
 		subtract();
-		break;
-	    case "*":
+	    } else if(input.equals("*")) {
 		multiply();
-		break;
-	    case "/":
+	    } else if(input.equals("/")) {
 		divide();
-		break;
-	    default:
+	    } else {
 		System.out.println("something broke somehow");
-		break;
 	    }
 	    if(stack.size()>0) {System.out.println(stack.peek());}
 	} else {
