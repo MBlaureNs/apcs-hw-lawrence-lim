@@ -54,17 +54,42 @@ public class BST {
     }
 
     public Node search2(int n) {
-	return search2b(n,root);
+	return search2(n,root);
     }
-    public Node search2b(int n, Node cur) {
+    public Node search2(int n, Node cur) {
 	if(cur==null) {return null;}
 	else if(cur.data==n) {return cur;}
-	else if(n<cur.data) {return search2b(n,cur.left);}
-	else {return search2b(n,cur.right);}
+	else if(n<cur.data) {return search2(n,cur.left);}
+	else {return search2(n,cur.right);}
+    }
+
+    public void delete(int n) {
+	delete(search(n));
+    }
+    public void delete(Node n) {
+	Node cur = n;
+	if(cur==null) {return;}
+	if(cur.left==null && cur.right==null) {
+	    if(cur==root) {root=null;}
+	    else if(n.data<cur.prev.data) {cur.prev.left = null;}
+	    else {cur.prev.right = null;}
+	} else if (cur.left==null) {
+	    if(cur==root) {root=cur.right;}
+	    else if(n.data<cur.prev.data) {cur.prev.left = cur.right;}
+	    else {cur.prev.right = cur.right;}
+	} else if (cur.right==null) {
+	    if(cur==root) {root=cur.left;}
+	    else if(n.data<cur.prev.data) {cur.prev.left = cur.left;}
+	    else {cur.prev.right = cur.left;}
+	} else {
+	    Node next = cur.left;
+	    while(next.right!=null) {next=next.right;}
+	    cur.data = next.data;
+	    delete(next);
+	}
     }
     
     public String toString() {
-	int depth = 0;
 	return treeString(root,0);
     }
     public String treeString(Node n, int depth) {
