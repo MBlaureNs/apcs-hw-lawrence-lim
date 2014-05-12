@@ -16,6 +16,16 @@ public class Heap {
     }
 
     public int size() {return size;}
+    public int[] rawdata() {
+	int[] r = new int[size];
+	for(int i=0; i<size; i++) {
+	    r[i]=data[i];
+	}
+	return r;
+    }
+    public int getMax() {
+	return data[0];
+    }
 
     public void add(int n) {
 	size++;
