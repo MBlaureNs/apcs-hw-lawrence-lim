@@ -5,19 +5,19 @@ public class RunningMedian {
     Heap high;
     
     public RunningMedian() {
-	low = new Heap();
-	high = new Heap();	
+	low = new Heap(true);
+	high = new Heap(false);	
     }
     
     public int median() {
 	if(low.size() > high.size()) {
-	    return low.getMax();
+	    return low.getTop();
 	} else if (high.size() > low.size()) {
-	    return high.getMax();
+	    return high.getTop();
 	} else if (low.size() == 0 && high.size() == 0)  {
 	    return 0;
 	} else {
-	    return (low.getMax() + high.getMax())/2;
+	    return (low.getTop() + high.getTop())/2;
 	}
     }
     
@@ -33,13 +33,13 @@ public class RunningMedian {
     public int removeMedian() {
 	int r;
 	if(low.size() > high.size()) {
-	    r = low.removeMax();
+	    r = low.removeTop();
 	} else if (high.size() > low.size()) {
-	    r = high.removeMax();
+	    r = high.removeTop();
 	} else if (low.size() == 0 && high.size() == 0)  {
 	    r = 0;
 	} else {
-	    r = (low.removeMax() + high.removeMax())/2;
+	    r = (low.removeTop() + high.removeTop())/2;
 	}
 	balance();
 	return r;
@@ -47,9 +47,9 @@ public class RunningMedian {
 
     private void balance() {
 	if (low.size() - high.size() > 1) {
-	    high.add(low.removeMax());
+	    high.add(low.removeTop());
 	} else if (high.size() - low.size() > 1) {
-	    low.add(high.removeMax());
+	    low.add(high.removeTop());
 	}
 	
     }
