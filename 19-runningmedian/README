@@ -1,0 +1,7 @@
+Sets represent collections of elements with no duplicate elements. 
+Maps represent pairs of keys and values like Python dictionaries. maps behave similarly to sets in that keys must be unique, but differ in that values do not necessarily have to be.
+
+TreeMaps store map entries in a sorted red-black tree with the guarantee that the tree has approximately log(n) height. 
+HashMaps store map entries in an hash table using a hashing function to determine the index. HashMaps are unsorted, but give constant time performance on get and put operations if elements are distributed properly among the buckets. 
+
+Using a test case of random integers up to Integer.MAX_VALUE as keys and 128 instances of the text of the wikipedia article on the AK-47, HashMaps appear to give better performance overall.
